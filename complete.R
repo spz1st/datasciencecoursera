@@ -8,7 +8,8 @@ complete <- function(directory, id=1:332){
     data <- read.csv(name)
     # print(summary(data))
     # print(data[pollutan][!is.na(data[pollutan])])
-    rows <- nrow(data[!is.na(data["sulfate"]) & !is.na(data["nitrate"]),])
+    # rows <- nrow(data[!is.na(data["sulfate"]) & !is.na(data["nitrate"]),])
+    rows <- nrow(data[complete.cases(data),])
     d <- rbind(d, c(i, rows)) 
   }
   names(d) = c("id", "nobs")
